@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccn4cpnrhfgb2"]
+
+[ext_resource type="Script" path="res://src/game/game.gd" id="1_lkv3w"]
+[ext_resource type="PackedScene" uid="uid://d4m06jrs44vna" path="res://src/game/hand.tscn" id="3_3ifxr"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lkv3w")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 80
+text = "0:00"
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 80
+text = "Pause"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+theme_override_font_sizes/font_size = 50
+step = 1.0
+value = 70.0
+
+[node name="Hand" parent="VBoxContainer" instance=ExtResource("3_3ifxr")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

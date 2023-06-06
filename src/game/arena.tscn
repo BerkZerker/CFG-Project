@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://sq0rigkhrc3h"]
+
+[ext_resource type="PackedScene" uid="uid://d2qntu1kie6ag" path="res://old/objects/enviromment/enviromment_card.tscn" id="1_sw230"]
+
+[node name="Arena" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="EnvirommentCard2" parent="VBoxContainer3" instance=ExtResource("1_sw230")]
+layout_mode = 2
+
+[node name="EnvirommentCard" parent="VBoxContainer3" instance=ExtResource("1_sw230")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="EnvirommentCard" parent="VBoxContainer2" instance=ExtResource("1_sw230")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="EnvirommentCard2" parent="VBoxContainer" instance=ExtResource("1_sw230")]
+layout_mode = 2
+
+[node name="EnvirommentCard" parent="VBoxContainer" instance=ExtResource("1_sw230")]
+layout_mode = 2

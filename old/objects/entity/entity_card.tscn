@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhe02va8oku2h"]
+
+[ext_resource type="PackedScene" uid="uid://b51lr8qdh0sdr" path="res://old/objects/object_card.tscn" id="1_ybt1n"]
+[ext_resource type="Script" path="res://old/objects/entity/entity_card.gd" id="2_dabsg"]
+
+[node name="EntityCard" instance=ExtResource("1_ybt1n")]
+script = ExtResource("2_dabsg")

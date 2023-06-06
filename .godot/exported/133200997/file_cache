@@ -1,0 +1,10 @@
+res://src/cards/actions/movement/movement_card.tscn::cbdcb4259e30f28dbb1b2fb936ab6995::1685507144::res://.godot/exported/133200997/export-7348e344037986c888130cf3c7cea170-movement_card.scn
+res://src/cards/actions/action_card.tscn::8bb9a0020b2487e014f727e0cb868172::1685509846::res://.godot/exported/133200997/export-a8377d8516c0c182292b1b75eb05e88b-action_card.scn
+res://src/cards/objects/entity/player/player_card.tscn::c203828af34a15cc667e23c7c995f06f::1685507197::res://.godot/exported/133200997/export-688f8d0e2d5a07fbcd3bcea1222baf92-player_card.scn
+res://src/cards/objects/entity/entity_card.tscn::312ba24d05aef6fd748540ea3254f02b::1685469782::res://.godot/exported/133200997/export-984fadf136ac4ec19a20b5bb6df3e832-entity_card.scn
+res://src/cards/objects/enviromment/enviromment_card.tscn::d2c6e2f9d15316f7d1e37bb9f72fa7b9::1685508223::res://.godot/exported/133200997/export-13d7b61907fe1e7f73b5871fdb22bc0b-enviromment_card.scn
+res://src/cards/objects/object_card.tscn::20795b1c3b91f139356bb49d79ec3b61::1685509845::res://.godot/exported/133200997/export-268fff12bd295d38276612ffc651f148-object_card.scn
+res://src/cards/card.tscn::ddfdf551d7735a2a3c8c43a2df715d59::1685509845::res://.godot/exported/133200997/export-f6c9959e38fa9f66392921a793bebaea-card.scn
+res://src/game/board.tscn::edc8e10813765fafbafa5a175c178143::1685506575::res://.godot/exported/133200997/export-5c694253688f553d3a4a7edd33a06d48-board.scn
+res://src/game/game.tscn::639250fd1dfe1563b79c2f7241e81e40::1685509845::res://.godot/exported/133200997/export-6e5b387e12ff556dd128bdbf60649684-game.scn
+res://src/game/hand.tscn::d532e0534c00372e03772faff62c3241::1685502727::res://.godot/exported/133200997/export-ccb97d62a8e65667b336245484cf447e-hand.scn

@@ -1,0 +1,8 @@
+get game set up on github (eventually)
+
+All card's timers start as soon as they would be able to do their action.
+Cards can be played in one of the 3 lanes, and will move up in the queue as 
+space allows. Once they have done their action they will be discarded and
+added back to the bottom of the deck. 
+
+# add states to the cards.

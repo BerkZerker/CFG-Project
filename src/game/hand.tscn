@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4m06jrs44vna"]
+
+[ext_resource type="Script" path="res://src/game/hand.gd" id="1_l5bhu"]
+
+[node name="Hand" type="HBoxContainer"]
+mouse_filter = 2
+alignment = 1
+script = ExtResource("1_l5bhu")
