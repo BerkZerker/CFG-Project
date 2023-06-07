@@ -1,13 +1,13 @@
-Timer
+CollisionShape2D
+Area2D
 VBoxContainer
 HBoxContainer
+Timer
 Control
 MarginContainer
 Container
 PanelContainer
 TouchScreenButton
-CollisionShape2D
-Area2D
 AnimationPlayer
 Node2D
 CenterContainer

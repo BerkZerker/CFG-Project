@@ -37,6 +37,8 @@ func _unhandled_input(event : InputEvent) -> void:
 func select(event : InputEvent) -> void:
 	is_pressed = true
 	touch_index = event.index
+	target_pos.x = event.position.x - size.x / 2.0
+	target_pos.y = event.position.y - size.y / 2.0
 #	on_action_card_selected.emit(self)
 #	#$AnimationPlayer.play("selected")
 	
@@ -50,3 +52,7 @@ func drop() -> void:
 #	# JUST FOR TESTING
 #	if is_snapped:
 #		Input.vibrate_handheld(50)
+
+
+func _on_area_2d_area_entered(area):
+	print('entered')

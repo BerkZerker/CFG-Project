@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf74jxsgldog1"]
+
+[ext_resource type="Script" path="res://src/game/lane.gd" id="1_hiiu1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fvg7"]
+size = Vector2(358, 1434)
+
+[node name="Lane" type="VBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_hiiu1")
+
+[node name="CardDropArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+shape = SubResource("RectangleShape2D_3fvg7")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
