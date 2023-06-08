@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtyunjlwjefep"]
+
+[ext_resource type="PackedScene" uid="uid://bpod5q0siu5vg" path="res://src/game/zone.tscn" id="1_k86yb"]
+
+[node name="Arena" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EnemyZone" parent="." instance=ExtResource("1_k86yb")]
+layout_mode = 2
+
+[node name="PlayerZone" parent="." instance=ExtResource("1_k86yb")]
+layout_mode = 2

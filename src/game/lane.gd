@@ -1,10 +1,11 @@
 @tool
 
-class_name Lane extends VBoxContainer
+class_name Lane extends TextureRect
 
-@onready var cardDropArea := $CardDropArea
-@onready var collisionShape := $CardDropArea/CollisionShape2D
+var touch_indexes: Dictionary = {}
 
+signal entered(index)
+signal exited(index)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,11 +15,31 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
 
+# This handles if the card is selected, dragged, and dropped.
+func _unhandled_input(event : InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if get_global_rect().has_point(event.position):
+			# If a touch down happens inside the rect
+			if event.pressed and not touch_indexes.has(event.index): 
+				touch_indexes[event.index] = true
+				# Emit sig
+			# If a touch up happens inside the rect
+			elif not event.pressed and touch_indexes.has(event.index):
+				touch_indexes.erase(event.index)
+				# emit sig
 
-# Resize and reposition the collisionShape whenever the base node changes.
-func _on_resized():
-	collisionShape.shape.extents.x = get_rect().size.x / 2.0
-	collisionShape.shape.extents.y = get_rect().size.y / 2.0
-	cardDropArea.position.x += get_rect().size.x / 2.0
-	cardDropArea.position.y += get_rect().size.y / 2.0
+	if event is InputEventScreenDrag:
+		if get_global_rect().has_point(event.position):
+			# If a touch drag enters the rect
+			if not touch_indexes.has(event.index): 
+				touch_indexes[event.index] = true
+				entered.emit(event.index)
+				print('drag in')
+		else:
+			# If a touch drag exits the rect.
+			if touch_indexes.has(event.index):
+				touch_indexes.erase(event.index)
+				exited.emit(event.index)
+				print('drag out')

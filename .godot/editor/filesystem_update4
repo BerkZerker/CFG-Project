@@ -2,6 +2,4 @@ res://src/game/game.tscn
 res://src/game/zone.tscn
 res://src/game/lane.tscn
 res://src/cards/card.tscn
-res://src/game/lane.gd
-res://src/cards/card.gd
-res://todo.txt
+res://src/game/arena.tscn

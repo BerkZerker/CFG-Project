@@ -7,8 +7,7 @@ added back to the bottom of the deck.
 
 # add states to the cards.
 
-# use dynamic area2ds and static area2ds for the lanes, and then detect in the 
-card script when overlap happens and handle it accordingly.
-
-# The problem with areas is that I just need it to detect the middle point.
-...meaning i'll probs not use area2d. Basically just resue my old code.
+# Connect signals from the lanes to the base card in Main, so that when a 
+card is dragged over a lane it can change it's state to "droppable" and 
+when dropped will detach itself from it's parent node, and attack itself to 
+the lane node. The lane node will handle it's action from there.
