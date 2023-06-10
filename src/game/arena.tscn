@@ -1,13 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtyunjlwjefep"]
+[gd_scene load_steps=3 format=3 uid="uid://dtyunjlwjefep"]
 
-[ext_resource type="PackedScene" uid="uid://bpod5q0siu5vg" path="res://src/game/zone.tscn" id="1_k86yb"]
+[ext_resource type="PackedScene" uid="uid://cxn1cpfrgf63y" path="res://src/game/enemy_lane.tscn" id="1_c61ig"]
+[ext_resource type="PackedScene" uid="uid://ypj5xvoyqk54" path="res://src/game/player_lane.tscn" id="2_axmfr"]
 
 [node name="Arena" type="VBoxContainer"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="EnemyZone" parent="." instance=ExtResource("1_k86yb")]
+[node name="EnemyZone" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
 
-[node name="PlayerZone" parent="." instance=ExtResource("1_k86yb")]
+[node name="EnemyLane1" parent="EnemyZone" instance=ExtResource("1_c61ig")]
 layout_mode = 2
+lane_no = 1
+
+[node name="EnemyLane2" parent="EnemyZone" instance=ExtResource("1_c61ig")]
+layout_mode = 2
+lane_no = 2
+
+[node name="EnemyLane3" parent="EnemyZone" instance=ExtResource("1_c61ig")]
+layout_mode = 2
+lane_no = 3
+
+[node name="PlayerZone" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PlayerLane1" parent="PlayerZone" instance=ExtResource("2_axmfr")]
+layout_mode = 2
+lane_no = 1
+
+[node name="PlayerLane2" parent="PlayerZone" instance=ExtResource("2_axmfr")]
+layout_mode = 2
+lane_no = 2
+
+[node name="PlayerLane3" parent="PlayerZone" instance=ExtResource("2_axmfr")]
+layout_mode = 2
+lane_no = 3

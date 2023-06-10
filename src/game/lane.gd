@@ -2,10 +2,12 @@
 
 class_name Lane extends TextureRect
 
+@export var lane_type : String
+@export var lane_no : int
+@onready var cardQueue := $CenterContainer/CardQueue
+
 var touch_indexes: Dictionary = {}
 
-signal entered(index)
-signal exited(index)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,15 +33,24 @@ func _unhandled_input(event : InputEvent) -> void:
 				# emit sig
 
 	if event is InputEventScreenDrag:
-		if get_global_rect().has_point(event.position):
-			# If a touch drag enters the rect
-			if not touch_indexes.has(event.index): 
-				touch_indexes[event.index] = true
-				entered.emit(event.index)
-				print('drag in')
-		else:
-			# If a touch drag exits the rect.
-			if touch_indexes.has(event.index):
-				touch_indexes.erase(event.index)
-				exited.emit(event.index)
-				print('drag out')
+		if get_global_rect().has_point(event.position) and not touch_indexes.has(event.index): 
+			touch_indexes[event.index] = true
+			get_tree().call_group("cards", "lane_entered", event.index, self)
+		elif not get_global_rect().has_point(event.position) and touch_indexes.has(event.index):
+			touch_indexes.erase(event.index)
+			get_tree().call_group("cards", "lane_exited", event.index, self)
+
+
+# FOR TESTING
+func add_card(card : Card) -> void:
+	cardQueue.add_child(card)
+	card.card_state = card.States.ALIVE
+	card.timer.start()
+
+
+func highlight_on():
+	modulate.a = 0.5
+
+
+func highlight_off():
+	modulate.a = 1

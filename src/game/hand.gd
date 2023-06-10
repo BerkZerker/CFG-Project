@@ -6,6 +6,7 @@ class_name Hand extends HBoxContainer
 
 var card_scene := preload("res://src/cards/card.tscn")
 var cards: Array[Card] = []
+var deck: Array[Card] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,12 +14,18 @@ func _ready() -> void:
 	# Add the cards.
 	for i in range(SIZE):
 		var card = card_scene.instantiate()
+		card.card_state = card.States.WAITING
 		cards.append(card)
 		add_child(card)
 
 
-# Called by the main node to connect the signals.
-#func connect_signals(node: Node) -> void:
-#	for c in cards:
-#		c.on_action_card_selected.connect(node._on_action_card_selected)
-#		c.on_action_card_dropped.connect(node._on_action_card_dropped)
+# JUST FOR TESTING.
+func new_card():
+	var card = card_scene.instantiate()
+	card.card_state = card.States.WAITING
+	cards.append(card)
+	add_child(card)
+
+func remove_card(card):
+	cards.erase(card)
+	remove_child(card)

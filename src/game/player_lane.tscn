@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ypj5xvoyqk54"]
+
+[ext_resource type="PackedScene" uid="uid://bf74jxsgldog1" path="res://src/game/lane.tscn" id="1_ey8wc"]
+[ext_resource type="Texture2D" uid="uid://cnxeiqpqrbjrj" path="res://old/actions/movement/move.png" id="2_avtx5"]
+
+[node name="PlayerLane" instance=ExtResource("1_ey8wc")]
+texture = ExtResource("2_avtx5")
+lane_type = "player"
+
+[node name="CenterContainer" parent="." index="0"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2

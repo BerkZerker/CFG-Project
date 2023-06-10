@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccn4cpnrhfgb2"]
+[gd_scene load_steps=4 format=3 uid="uid://ccn4cpnrhfgb2"]
 
 [ext_resource type="Script" path="res://src/game/game.gd" id="1_lkv3w"]
-[ext_resource type="PackedScene" uid="uid://bpod5q0siu5vg" path="res://src/game/zone.tscn" id="2_3xpaq"]
+[ext_resource type="PackedScene" uid="uid://dtyunjlwjefep" path="res://src/game/arena.tscn" id="2_jraly"]
 [ext_resource type="PackedScene" uid="uid://d4m06jrs44vna" path="res://src/game/hand.tscn" id="3_3ifxr"]
-[ext_resource type="PackedScene" uid="uid://dtyunjlwjefep" path="res://src/game/arena.tscn" id="3_eytvg"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lkv3w")
@@ -33,7 +32,7 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 80
 text = "0:00"
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer"]
+[node name="PauseButton" type="Button" parent="VBoxContainer/MarginContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 8
@@ -41,12 +40,13 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 80
 text = "Pause"
 
-[node name="Zone" parent="VBoxContainer" instance=ExtResource("2_3xpaq")]
-visible = false
+[node name="Arena" parent="VBoxContainer" instance=ExtResource("2_jraly")]
 layout_mode = 2
 
-[node name="Arena" parent="VBoxContainer" instance=ExtResource("3_eytvg")]
+[node name="Hand" parent="VBoxContainer" instance=ExtResource("3_3ifxr")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
@@ -56,9 +56,4 @@ theme_override_font_sizes/font_size = 50
 step = 1.0
 value = 70.0
 
-[node name="Hand" parent="VBoxContainer" instance=ExtResource("3_3ifxr")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[connection signal="pressed" from="VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]
