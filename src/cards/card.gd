@@ -4,18 +4,19 @@ var touch_index : int = -1
 var is_pressed : bool = false
 var target_pos : Vector2 = Vector2.ZERO
 var original_pos : Vector2 = Vector2.ZERO
-var current_lane : Lane = null
-var previous_lane : Lane = null
+var current_lane : int = 0
 var card_state : States = States.DEAD
 
 # Action-specific vars.
 @export var health : int
 @export var max_health : int
-@export var deploy_lane : String 
+@export var lane_type : Lane.Types
 @export var time : float
+@export var energy : int
 
-@onready var timer := $Timer
-@onready var progressBar := $CenterContainer/TextureProgressBar
+@onready var timer : Timer = $Timer
+@onready var progressBar : TextureProgressBar = $CenterContainer/TextureProgressBar
+@onready var cost : Label = $GUI/Cost
 
 enum States {
 	DEAD, # Not in play
@@ -29,11 +30,14 @@ enum States {
 
 
 func _ready() -> void:
+	GameEvents.laneEntered.connect(_on_lane_entered)
+	GameEvents.laneExited.connect(_on_lane_exited)
 	timer.wait_time = time
-	progressBar.max_value = time * 1000
+	progressBar.max_value = time
+	cost.text = str(energy)
 
 func _process(delta) -> void:
-	progressBar.value = timer.time_left * 1000
+	progressBar.value = timer.time_left
 	if is_pressed:
 		global_position = target_pos
 
@@ -54,7 +58,6 @@ func _unhandled_input(event : InputEvent) -> void:
 
 
 func execute_action() -> void:
-	print('card action executed')
 	queue_free()
 			
 				
@@ -71,34 +74,30 @@ func select(event : InputEvent) -> void:
 func drop() -> void:
 	is_pressed = false
 	touch_index = -1
-	if card_state == States.DROPPABLE: # I'll wanna check with main that this is OK first...
-		# And tell main that a card was played
-		# THIS IS JUST AS A DEMO
-		get_parent().new_card()
-		get_parent().remove_card(self)
-		# Add self to lane.
-		current_lane.add_card(self)
-		current_lane.highlight_off()
+	if card_state == States.DROPPABLE:
+		GameEvents.cardDropped.emit(self)
 	elif card_state == States.CARRYING:
-		card_state = States.WAITING
-		# Reset card's position.
-		global_position = original_pos
+		return_to_hand()
 
 
-func lane_entered(index : int, lane : Lane) -> void:
-	if touch_index == index: 
-		# This is for an order-of-operations bug fix.
-		previous_lane = current_lane
+func return_to_hand():
+	card_state = States.WAITING
+	global_position = original_pos
+
+
+func _on_lane_entered(index : int, lane : int, type : Lane.Types) -> void:
+	if touch_index == index and (card_state == States.CARRYING or card_state == States.DROPPABLE) and (lane_type == type or lane_type == Lane.Types.DEBUG):
 		current_lane = lane
-		if (card_state == States.CARRYING or card_state == States.DROPPABLE) and (deploy_lane == lane.lane_type or deploy_lane == "debug"):
-			card_state = States.DROPPABLE
-			lane.highlight_on()
+		card_state = States.DROPPABLE
+		#GameEvents.laneHighlightOn.emit(current_lane)
 
 
-func lane_exited(index : int, lane : Lane) -> void:
-	# DO NOT TOUCH THIS UNLESS ALL ELSE FAILS -
-	if touch_index == index and (current_lane == lane or previous_lane == lane) and lane.touch_indexes.size() == 0 and (deploy_lane == lane.lane_type or deploy_lane == "debug"): 
+func _on_lane_exited(index : int, lane : int, type : Lane.Types) -> void:
+	if touch_index == index and current_lane == lane and (lane_type == type or lane_type == Lane.Types.DEBUG):
+		current_lane = 0
 		card_state = States.CARRYING
-		lane.highlight_off()
+		#GameEvents.laneHighlightOff.emit(lane)
+		
+		
 
 

@@ -6,9 +6,12 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lkv3w")
+MAX_ENERGY = 10
 metadata/_edit_horizontal_guides_ = []
 
-[node name="Timer" type="Timer" parent="."]
+[node name="EnergyTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -48,12 +51,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+[node name="EnergyBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 1
 mouse_filter = 2
 theme_override_font_sizes/font_size = 50
-step = 1.0
-value = 70.0
 
+[connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]

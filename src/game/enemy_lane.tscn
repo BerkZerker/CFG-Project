@@ -5,7 +5,7 @@
 
 [node name="EnemyLane" instance=ExtResource("1_7k4vg")]
 texture = ExtResource("2_myaxk")
-lane_type = "enemy"
+type = 2
 
 [node name="CenterContainer" parent="." index="0"]
 anchors_preset = 7

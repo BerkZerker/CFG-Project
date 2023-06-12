@@ -5,7 +5,7 @@
 
 [node name="PlayerLane" instance=ExtResource("1_ey8wc")]
 texture = ExtResource("2_avtx5")
-lane_type = "player"
+type = 1
 
 [node name="CenterContainer" parent="." index="0"]
 anchors_preset = 5

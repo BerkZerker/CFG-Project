@@ -2,16 +2,26 @@
 
 class_name Lane extends TextureRect
 
-@export var lane_type : String
-@export var lane_no : int
-@onready var cardQueue := $CenterContainer/CardQueue
+@export var type : Types
+@export var number : int
+
+@onready var cardQueue : VBoxContainer = $CenterContainer/CardQueue
 
 var touch_indexes: Dictionary = {}
+
+enum Types {
+	NONE,
+	PLAYER,
+	ENEMY,
+	DEBUG,
+}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+	#GameEvents.laneHighlightOn.connect(highlight_on)
+	#GameEvents.laneHighlightOff.connect(highlight_off)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,22 +45,24 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventScreenDrag:
 		if get_global_rect().has_point(event.position) and not touch_indexes.has(event.index): 
 			touch_indexes[event.index] = true
-			get_tree().call_group("cards", "lane_entered", event.index, self)
+			GameEvents.laneEntered.emit(event.index, number, type)
 		elif not get_global_rect().has_point(event.position) and touch_indexes.has(event.index):
 			touch_indexes.erase(event.index)
-			get_tree().call_group("cards", "lane_exited", event.index, self)
+			GameEvents.laneExited.emit(event.index, number, type)
 
 
 # FOR TESTING
 func add_card(card : Card) -> void:
-	cardQueue.add_child(card)
+	card.reparent(cardQueue)
 	card.card_state = card.States.ALIVE
 	card.timer.start()
 
 
-func highlight_on():
-	modulate.a = 0.5
+func highlight_on(lane_no : int):
+	if number == lane_no:
+		modulate.a = 0.5
 
 
-func highlight_off():
-	modulate.a = 1
+func highlight_off(lane_no : int):
+	if number == lane_no:
+		modulate.a = 1

@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtyunjlwjefep"]
+[gd_scene load_steps=4 format=3 uid="uid://dtyunjlwjefep"]
 
 [ext_resource type="PackedScene" uid="uid://cxn1cpfrgf63y" path="res://src/game/enemy_lane.tscn" id="1_c61ig"]
+[ext_resource type="Script" path="res://src/game/arena.gd" id="1_px3vo"]
 [ext_resource type="PackedScene" uid="uid://ypj5xvoyqk54" path="res://src/game/player_lane.tscn" id="2_axmfr"]
 
 [node name="Arena" type="VBoxContainer"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
+script = ExtResource("1_px3vo")
 
 [node name="EnemyZone" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -15,15 +17,15 @@ alignment = 1
 
 [node name="EnemyLane1" parent="EnemyZone" instance=ExtResource("1_c61ig")]
 layout_mode = 2
-lane_no = 1
+number = 1
 
 [node name="EnemyLane2" parent="EnemyZone" instance=ExtResource("1_c61ig")]
 layout_mode = 2
-lane_no = 2
+number = 2
 
 [node name="EnemyLane3" parent="EnemyZone" instance=ExtResource("1_c61ig")]
 layout_mode = 2
-lane_no = 3
+number = 3
 
 [node name="PlayerZone" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -32,12 +34,12 @@ alignment = 1
 
 [node name="PlayerLane1" parent="PlayerZone" instance=ExtResource("2_axmfr")]
 layout_mode = 2
-lane_no = 1
+number = 4
 
 [node name="PlayerLane2" parent="PlayerZone" instance=ExtResource("2_axmfr")]
 layout_mode = 2
-lane_no = 2
+number = 5
 
 [node name="PlayerLane3" parent="PlayerZone" instance=ExtResource("2_axmfr")]
 layout_mode = 2
-lane_no = 3
+number = 6
