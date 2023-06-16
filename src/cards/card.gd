@@ -2,6 +2,7 @@ class_name Card extends Control
 
 var touch_index : int = -1
 var is_pressed : bool = false
+var is_selected : bool = false
 var target_pos : Vector2 = Vector2.ZERO
 var original_pos : Vector2 = Vector2.ZERO
 var current_lane : int = 0
@@ -32,6 +33,9 @@ enum States {
 func _ready() -> void:
 	GameEvents.laneEntered.connect(_on_lane_entered)
 	GameEvents.laneExited.connect(_on_lane_exited)
+	GameEvents.cardSelected.connect(_on_card_selected)
+	GameEvents.lanePressed.connect(_on_lane_pressed)
+	GameEvents.laneReleased.connect(_on_lane_released)
 	timer.wait_time = time
 	progressBar.max_value = time
 	cost.text = str(energy)
@@ -65,15 +69,16 @@ func execute_action() -> void:
 func select(event : InputEvent) -> void:
 	is_pressed = true
 	touch_index = event.index
-	target_pos = global_position
 	original_pos = global_position
-	card_state = States.SELECTED
+	target_pos = global_position
+	GameEvents.cardSelected.emit(self)
 	
 	
 # Is called when the card is dropped.
 func drop() -> void:
 	is_pressed = false
 	touch_index = -1
+	target_pos = original_pos
 	if card_state == States.DROPPABLE:
 		GameEvents.cardDropped.emit(self)
 	elif card_state == States.CARRYING:
@@ -97,7 +102,33 @@ func _on_lane_exited(index : int, lane : int, type : Lane.Types) -> void:
 		current_lane = 0
 		card_state = States.CARRYING
 		#GameEvents.laneHighlightOff.emit(lane)
-		
+
+
+func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
+#	if is_selected and (lane_type == type or lane_type == Lane.Types.DEBUG):
+#		current_lane = lane
+#		is_pressed = true
+#		card_state = States.DROPPABLE
+#		touch_index = index
+#		target_pos.x = pos.x - size.x / 2.0
+#		target_pos.y = pos.y - size.y / 2.0
+	pass
+
+
+func _on_lane_released(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
+	pass
+	
+
+# I need to clean this up.
+func _on_card_selected(card : Card) -> void:
+	if card == self:
+		is_selected = true
+		card_state = States.SELECTED
+		$AnimationPlayer.play("selected")
+	else:
+		is_selected = false
+		card_state = States.WAITING
+		$AnimationPlayer.play("deselected")
 		
 
 

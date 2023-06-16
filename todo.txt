@@ -16,8 +16,8 @@ pack into the draw pile (likely an array in the Hand class).
 ### i may need a 2nd timer for how long the actual action takes.
 figure out how cards will handle these two timers 
 
-# Figure out how to handle lane animations.
+# Figure out how to handle lane animations. (4 signals sent to the lane class)
 
 # Add card animations
 
-# Make cards able to be played by clicking, not dragging.
+# Clean up last 3 funcs and related signals in card class.

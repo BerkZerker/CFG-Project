@@ -36,11 +36,11 @@ func _unhandled_input(event : InputEvent) -> void:
 			# If a touch down happens inside the rect
 			if event.pressed and not touch_indexes.has(event.index): 
 				touch_indexes[event.index] = true
-				# Emit sig
+				GameEvents.lanePressed.emit(event.position, event.index, number, type)
 			# If a touch up happens inside the rect
 			elif not event.pressed and touch_indexes.has(event.index):
 				touch_indexes.erase(event.index)
-				# emit sig
+				GameEvents.laneReleased.emit(event.position, event.index, number, type)
 
 	if event is InputEventScreenDrag:
 		if get_global_rect().has_point(event.position) and not touch_indexes.has(event.index): 
