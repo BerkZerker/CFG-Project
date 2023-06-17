@@ -26,6 +26,7 @@ func new_card():
 	cards.append(card)
 	add_child(card)
 
+
 func remove_card(card):
 	cards.erase(card)
 	remove_child(card)

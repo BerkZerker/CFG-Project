@@ -21,3 +21,8 @@ figure out how cards will handle these two timers
 # Add card animations
 
 # Clean up last 3 funcs and related signals in card class.
+
+### I need to check whether or not a finger index is already being used when a card is clicked on.
+Porbs just do this in the hand class.
+
+that or figure out how to use _gui_input
