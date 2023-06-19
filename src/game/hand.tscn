@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://src/game/hand.gd" id="1_l5bhu"]
 
-[node name="Hand" type="HBoxContainer"]
+[node name="Hand" type="Control"]
+custom_minimum_size = Vector2(830, 260)
+layout_mode = 3
+anchors_preset = 0
 mouse_filter = 2
-alignment = 1
 script = ExtResource("1_l5bhu")

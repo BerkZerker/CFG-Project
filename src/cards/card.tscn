@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://qgf2qrsruc3k"]
+[gd_scene load_steps=7 format=3 uid="uid://qgf2qrsruc3k"]
 
 [ext_resource type="Script" path="res://src/cards/card.gd" id="1_ius43"]
 [ext_resource type="Texture2D" uid="uid://c75lqs70fo4cf" path="res://old/objects/enviromment/blank.png" id="2_djran"]
@@ -18,57 +18,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqyjg"]
 size = Vector2(200, 260)
 
-[sub_resource type="Animation" id="Animation_sfilj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cimck"]
-resource_name = "deselected"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_w41r2"]
-resource_name = "selected"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 1.1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7cnpu"]
-_data = {
-"RESET": SubResource("Animation_sfilj"),
-"deselected": SubResource("Animation_cimck"),
-"selected": SubResource("Animation_w41r2")
-}
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(200, 260)
@@ -84,9 +34,6 @@ max_health = 2
 lane_type = 3
 time = 3.0
 energy = 2
-
-[node name="DeployTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ed8k4")
@@ -124,11 +71,6 @@ text = "info
 position = Vector2(100, 130)
 shape = SubResource("RectangleShape2D_sqyjg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_7cnpu")
-}
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -144,5 +86,13 @@ step = 0.0
 fill_mode = 5
 texture_progress = ExtResource("3_v28df")
 tint_progress = Color(1, 1, 1, 0.392157)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7cnpu")
+}
+
+[node name="DeployTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="DeployTimer" to="." method="execute_action"]

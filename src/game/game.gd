@@ -36,8 +36,9 @@ func _on_pause_button_pressed() -> void:
 func _on_card_dropped(card : Card) -> void:
 	if energy - card.energy >= 0:
 		energy -= card.energy
+		var i = card.hand_index
 		arena.add_card(card)
-		hand.new_card()
+		hand.new_card(i)
 	else:
 		card.return_to_hand()
 

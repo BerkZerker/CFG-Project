@@ -1,3 +1,4 @@
+@tool
 class_name Card extends Control
 
 # Action-specific vars.
@@ -13,6 +14,7 @@ class_name Card extends Control
 @onready var cost : Label = $GUI/Cost
 
 var touch_index : int = -1
+var hand_index : int = -1
 var is_pressed : bool = false
 var is_selected : bool = false
 var target_pos : Vector2 = Vector2.ZERO
@@ -90,8 +92,6 @@ func on_pressed(event : InputEvent) -> void:
 	GameEvents.cardSelected.emit()
 	is_selected = true
 	# FOR TESTING
-	modulate.a = 0.5
-	z_index = 10
 	
 	
 # Is called when the card is dropped.
@@ -102,16 +102,12 @@ func on_released() -> void:
 		return_to_hand()
 	elif card_state == States.DROPPABLE:
 		GameEvents.cardDropped.emit(self)
-	else:
-		print('other: ' + str(card_state))
-	z_index = 0
 		
 
 func _on_card_selected() -> void:
 	if is_selected:
 		is_selected = false
 		# FOR TESTING
-		modulate.a = 1
 
 
 func _on_lane_entered(index : int, lane : int, type : Lane.Types) -> void:

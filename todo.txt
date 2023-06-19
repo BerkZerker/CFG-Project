@@ -20,8 +20,4 @@ figure out how cards will handle these two timers
 
 # Add card animations
 
-# Clean up code
-
-# I think new cards are being added in an improper order, which is causing the overlap bug
-what i need to do is not have hand be a HBox but just a control of some sort, and 
-order the cards myself.
+# Clean up code (look at debugger)

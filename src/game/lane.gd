@@ -1,5 +1,4 @@
 @tool
-
 class_name Lane extends TextureRect
 
 @export var type : Types
