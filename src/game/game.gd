@@ -10,6 +10,7 @@ class_name Main extends Node
 
 var paused : bool = false
 var energy : int = 0
+var touch_indexes : Array[int] = []
 
 
 # Called when the node enters the scene tree for the first time.

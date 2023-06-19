@@ -16,13 +16,12 @@ pack into the draw pile (likely an array in the Hand class).
 ### i may need a 2nd timer for how long the actual action takes.
 figure out how cards will handle these two timers 
 
-# Figure out how to handle lane animations. (4 signals sent to the lane class)
+# Figure out how to handle lane animations. (4 signals sent to the lane class) (valid, invalid, hovered on, hovered off)
 
 # Add card animations
 
-# Clean up last 3 funcs and related signals in card class.
+# Clean up code
 
-### I need to check whether or not a finger index is already being used when a card is clicked on.
-Porbs just do this in the hand class.
-
-that or figure out how to use _gui_input
+# I think new cards are being added in an improper order, which is causing the overlap bug
+what i need to do is not have hand be a HBox but just a control of some sort, and 
+order the cards myself.

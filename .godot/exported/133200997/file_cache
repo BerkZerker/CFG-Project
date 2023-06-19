@@ -1,5 +1,5 @@
-res://src/cards/card.tscn::31fc382846ce015447a9d6c3f0b279f1::1687042534::res://.godot/exported/133200997/export-f6c9959e38fa9f66392921a793bebaea-card.scn
-res://src/game/game.tscn::936b60a1b4ca8621af1a28a88c1db9b5::1687042534::res://.godot/exported/133200997/export-6e5b387e12ff556dd128bdbf60649684-game.scn
+res://src/cards/card.tscn::7599acfd3861379319a8261c89632c92::1687140611::res://.godot/exported/133200997/export-f6c9959e38fa9f66392921a793bebaea-card.scn
+res://src/game/game.tscn::936b60a1b4ca8621af1a28a88c1db9b5::1687140611::res://.godot/exported/133200997/export-6e5b387e12ff556dd128bdbf60649684-game.scn
 res://src/game/hand.tscn::7523d3147ad97266d13851a329460c62::1686356915::res://.godot/exported/133200997/export-ccb97d62a8e65667b336245484cf447e-hand.scn
 res://old/actions/movement/movement_card.tscn::b44e8eaf4b5240d7a458c367fd67cd03::1686084707::res://.godot/exported/133200997/export-cbbbd45d2854dca19a0e1ae9ac203c1a-movement_card.scn
 res://old/actions/action_card.tscn::ea84e934503e1442c099e9f3d571d934::1686084700::res://.godot/exported/133200997/export-6d08289b8025f94f387a1c7d021b4bbd-action_card.scn
@@ -8,7 +8,7 @@ res://old/objects/entity/entity_card.tscn::acb4d10a94445d49b450478b3be5b4d6::168
 res://old/objects/enviromment/enviromment_card.tscn::10f687da8fb805a9847acc9d182e5be3::1686084718::res://.godot/exported/133200997/export-1fd95c3f75b3c544cdc6ef603ad7560e-enviromment_card.scn
 res://old/objects/object_card.tscn::a572f852bcd3826b8e0c55773d88136a::1686084718::res://.godot/exported/133200997/export-7b933809cc44a89ca443fb7594d62e7b-object_card.scn
 res://old/board.tscn::6cd4ed1b94d283bec9d6c5fdd4cc6264::1686084638::res://.godot/exported/133200997/export-a05627aaf7de4536207b4f9c683769fb-board.scn
-res://src/game/arena.tscn::fc7973fa3579bd3109105f83bae5d47f::1687042534::res://.godot/exported/133200997/export-4c5e3aeeacb77015c220767c6034fe19-arena.scn
-res://src/game/lane.tscn::7ad26ada16ebcdc56d7fae68cdc205cb::1687042534::res://.godot/exported/133200997/export-df09f277e8557f1dc239441721773b52-lane.scn
+res://src/game/arena.tscn::fc7973fa3579bd3109105f83bae5d47f::1687140611::res://.godot/exported/133200997/export-4c5e3aeeacb77015c220767c6034fe19-arena.scn
+res://src/game/lane.tscn::7ad26ada16ebcdc56d7fae68cdc205cb::1687140611::res://.godot/exported/133200997/export-df09f277e8557f1dc239441721773b52-lane.scn
 res://src/game/enemy_lane.tscn::c4c8f79e8092a06583dab1f3d5bf998e::1686511017::res://.godot/exported/133200997/export-7e0f9ec15a63c3da1b87d47ab3b8c6e6-enemy_lane.scn
 res://src/game/player_lane.tscn::b1518a318b55ee1dabf784d96dcc7da5::1686511010::res://.godot/exported/133200997/export-d1eb9b8b7dd48fcdf6a83b6000d38b41-player_lane.scn

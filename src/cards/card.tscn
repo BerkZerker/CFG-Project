@@ -71,7 +71,6 @@ _data = {
 }
 
 [node name="Card" type="Control"]
-z_index = 300
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 3
 anchors_preset = 0
@@ -86,7 +85,7 @@ lane_type = 3
 time = 3.0
 energy = 2
 
-[node name="Timer" type="Timer" parent="."]
+[node name="DeployTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -146,4 +145,4 @@ fill_mode = 5
 texture_progress = ExtResource("3_v28df")
 tint_progress = Color(1, 1, 1, 0.392157)
 
-[connection signal="timeout" from="Timer" to="." method="execute_action"]
+[connection signal="timeout" from="DeployTimer" to="." method="execute_action"]

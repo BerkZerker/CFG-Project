@@ -54,8 +54,8 @@ func _unhandled_input(event : InputEvent) -> void:
 # FOR TESTING
 func add_card(card : Card) -> void:
 	card.reparent(cardQueue)
-	card.card_state = card.States.ALIVE
-	card.timer.start()
+	card.start_deploy_timer()
+	#cardQueue.add_child(card)
 
 
 func highlight_on(lane_no : int):

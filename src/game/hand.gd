@@ -13,10 +13,7 @@ var deck: Array[Card] = []
 func _ready() -> void:
 	# Add the cards.
 	for i in range(SIZE):
-		var card = card_scene.instantiate()
-		card.card_state = card.States.WAITING
-		cards.append(card)
-		add_child(card)
+		new_card()
 
 
 # JUST FOR TESTING.
@@ -25,8 +22,3 @@ func new_card():
 	card.card_state = card.States.WAITING
 	cards.append(card)
 	add_child(card)
-
-
-func remove_card(card):
-	cards.erase(card)
-	remove_child(card)
