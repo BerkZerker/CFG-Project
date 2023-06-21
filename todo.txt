@@ -1,25 +1,32 @@
-All card's timers start as soon as they would be able to do their action.
+# All card's timers start as soon as they would be able to do their action.
 Cards can be played in one of the 3 lanes, and will move up in the queue as 
 space allows. Once they have done their action they will be discarded and
 added back to the bottom of the deck. 
 
+# I need a way to condence the cards in the lanes, but make it so that you
+can hold down on a specific card so as to view it. -> This also means I'll
+want all necessary info about the cards on the top (cost could go on bottom)
+so that they would be easily visible.
 
-# To do the card's action, idk if it'll be in the card itself, or as a signal to 
-the lane telling it that the card's action should be done.
+# I'll make action funcs in the lane class (think "damage(value)") and then call
+them from the card's action func "laneRef.damage(self.damage)"
 
-# Then once the action is complete, set the card's state to inactive and put it 
-pack into the draw pile (likely an array in the Hand class).
-
-# Then once it enters the hand again, set it's state to "WAITING".
-
-
-### i may need a 2nd timer for how long the actual action takes.
-figure out how cards will handle these two timers 
+# i may need a 2nd timer for how long the actual action takes.
+figure out how cards will handle these two timers (if I use them)
 
 # Figure out how to handle lane animations. (4 signals sent to the lane class) (valid, invalid, hovered on, hovered off)
+(white highlight for current, red for invalid)
 
-# Add card animations
+# Add card animations -_-
 
 # Clean up code (look at debugger)
 
 # Add proper multitouch support (whenever a card is pressed check if that index is already used)
+# Store a list in hand. When each card is instanced just set the list to an empty one until it
+can be assigned the one in hand via func call.
+
+
+# balancing notes:
+	ready_time and damage are inversely proportional
+	cost and "value" are proportional
+	(ik i spelled those wrong I just don't care)

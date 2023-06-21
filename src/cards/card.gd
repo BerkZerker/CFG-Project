@@ -5,13 +5,13 @@ class_name Card extends Control
 @export var health : int
 @export var max_health : int
 @export var lane_type : Lane.Types
-@export var time : float
-@export var energy : int
+@export var ready_time : float
+@export var energy_cost : int
 
 # Gameplay-specific vars.
-@onready var deployTimer : Timer = $DeployTimer
+@onready var readyTimer : Timer = $ReadyTimer
 @onready var progressBar : TextureProgressBar = $CenterContainer/TextureProgressBar
-@onready var cost : Label = $GUI/Cost
+@onready var costLabel : Label = $GUI/Cost
 
 var touch_index : int = -1
 var hand_index : int = -1
@@ -39,16 +39,13 @@ func _ready() -> void:
 	GameEvents.laneReleased.connect(_on_lane_released)
 	GameEvents.cardSelected.connect(_on_card_selected)
 	
-	deployTimer.wait_time = time
-	progressBar.max_value = time
-	cost.text = str(energy)
-
-func test(i):
-	energy = i
+	readyTimer.wait_time = ready_time
+	progressBar.max_value = ready_time
+	costLabel.text = str(energy_cost)
 	
 
 func _process(delta) -> void:
-	progressBar.value = deployTimer.time_left
+	progressBar.value = readyTimer.time_left
 	if is_pressed:
 		global_position = target_pos
 		
@@ -75,7 +72,7 @@ func execute_action() -> void:
 
 func start_deploy_timer() -> void:
 	card_state = States.ALIVE
-	deployTimer.start()
+	readyTimer.start()
 	
 	
 func return_to_hand():

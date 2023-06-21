@@ -84,8 +84,8 @@ script = ExtResource("1_ius43")
 health = 2
 max_health = 2
 lane_type = 3
-time = 3.0
-energy = 2
+deploy_time = null
+energy_cost = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ed8k4")
@@ -122,6 +122,7 @@ text = "info
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 position = Vector2(100, 130)
 shape = SubResource("RectangleShape2D_sqyjg")
+shape_visible = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -145,7 +146,7 @@ libraries = {
 "": SubResource("AnimationLibrary_7cnpu")
 }
 
-[node name="DeployTimer" type="Timer" parent="."]
+[node name="ReadyTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="DeployTimer" to="." method="execute_action"]
+[connection signal="timeout" from="ReadyTimer" to="." method="execute_action"]
