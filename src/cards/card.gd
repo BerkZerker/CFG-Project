@@ -20,7 +20,7 @@ var is_selected : bool = false
 var target_pos : Vector2 = Vector2.ZERO
 var original_pos : Vector2 = Vector2.ZERO
 var current_lane : int = 0
-var card_state : States = States.DEAD
+var card_state : States = States.WAITING
 
 enum States {
 	DEAD, # Not in play
@@ -88,12 +88,14 @@ func on_pressed(event : InputEvent) -> void:
 	is_pressed = true
 	touch_index = event.index
 	original_pos = global_position
-	target_pos = global_position
+	target_pos = original_pos
 	GameEvents.cardSelected.emit()
 	is_selected = true
 	# FOR TESTING
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("selected")
 	
-	
+
 # Is called when the card is dropped.
 func on_released() -> void:
 	is_pressed = false
@@ -108,6 +110,8 @@ func _on_card_selected() -> void:
 	if is_selected:
 		is_selected = false
 		# FOR TESTING
+		$AnimationPlayer.stop()
+		$AnimationPlayer.play("deselected")
 
 
 func _on_lane_entered(index : int, lane : int, type : Lane.Types) -> void:

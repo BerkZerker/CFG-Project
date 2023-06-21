@@ -21,3 +21,5 @@ figure out how cards will handle these two timers
 # Add card animations
 
 # Clean up code (look at debugger)
+
+# Add proper multitouch support (whenever a card is pressed check if that index is already used)

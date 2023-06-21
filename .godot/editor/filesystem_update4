@@ -1,5 +1,6 @@
+res://src/cards/card.tscn
 res://src/game/game.tscn
 res://src/game/arena.tscn
 res://src/game/lane.tscn
-res://src/cards/card.tscn
 res://src/game/hand.tscn
+res://src/cards/card.gd
