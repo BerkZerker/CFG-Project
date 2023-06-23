@@ -7,6 +7,7 @@ class_name Hand extends Control
 var card_scene := preload("res://src/cards/card.tscn")
 var cards: Array[Card] = []
 var deck: Array[Card] = []
+var touch_indexes : Array[int] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +30,12 @@ func calculate_size() -> void:
 	card.queue_free()
 
 
-# JUST FOR TESTING.
-func new_card(index : int):
+# Adds a new card at the specified slot in the hand.
+func new_card(index : int) -> void:
 	var card = card_scene.instantiate()
 	card.position.x = index * (card.size.x + MARGIN)
 	card.card_state = card.States.WAITING
 	card.hand_index = index
+	card.hand_reference = self
 	cards.append(card)
 	add_child(card)

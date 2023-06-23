@@ -1,8 +1,7 @@
-res://src/cards/card.tscn
+res://src/game/hand.tscn
+res://src/game/game.gd
+res://src/game/hand.gd
 res://src/cards/card.gd
 res://src/game/game.tscn
-res://src/game/hand.tscn
-res://src/game/game_events.gd
-res://src/game/hand.gd
-res://src/game/game.gd
+res://src/cards/card.tscn
 res://todo.txt

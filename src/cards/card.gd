@@ -14,6 +14,7 @@ class_name Card extends Control
 @onready var costLabel : Label = $GUI/Cost
 
 var touch_index : int = -1
+var hand_reference : Hand = null
 var hand_index : int = -1
 var is_pressed : bool = false
 var is_selected : bool = false
@@ -56,7 +57,7 @@ func _process(delta) -> void:
 # This handles if the card is selected, dragged, and dropped.
 func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventScreenTouch:
-		if $TouchScreenButton.is_pressed() and not is_pressed and card_state == States.WAITING:
+		if $TouchScreenButton.is_pressed() and not is_pressed and card_state == States.WAITING and not hand_reference.touch_indexes.has(event.index):
 			on_pressed(event)
 		elif not $TouchScreenButton.is_pressed() and is_pressed:
 			on_released()
@@ -87,6 +88,7 @@ func return_to_hand():
 func on_pressed(event : InputEvent) -> void:
 	is_pressed = true
 	touch_index = event.index
+	hand_reference.touch_indexes.append(touch_index)
 	target_pos = original_pos
 	GameEvents.cardSelected.emit()
 	is_selected = true
@@ -98,6 +100,7 @@ func on_pressed(event : InputEvent) -> void:
 # Is called when the card is dropped.
 func on_released() -> void:
 	is_pressed = false
+	hand_reference.touch_indexes.erase(touch_index)
 	touch_index = -1
 	if card_state == States.WAITING or card_state == States.CARRYING:
 		return_to_hand()
@@ -132,6 +135,7 @@ func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types)
 	if is_selected and card_state == States.WAITING:
 		is_pressed = true
 		touch_index = index
+		hand_reference.touch_indexes.append(touch_index)
 		target_pos.x = pos.x - size.x / 2.0
 		target_pos.y = pos.y - size.y / 2.0
 		current_lane = lane
