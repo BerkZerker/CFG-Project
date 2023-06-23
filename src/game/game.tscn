@@ -7,10 +7,15 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_lkv3w")
 MAX_ENERGY = 10
+MATCH_TIME = 180
+ENERGY_TIME = 0.5
 metadata/_edit_horizontal_guides_ = []
 
 [node name="EnergyTimer" type="Timer" parent="."]
-wait_time = 0.25
+one_shot = true
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 180.0
 one_shot = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -29,7 +34,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="MatchTime" type="Label" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 80
@@ -47,9 +52,12 @@ text = "Pause"
 layout_mode = 2
 
 [node name="Hand" parent="VBoxContainer" instance=ExtResource("3_3ifxr")]
+custom_minimum_size = Vector2(845, 260)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+SIZE = 4
+MARGIN = 15
 
 [node name="EnergyBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
@@ -58,4 +66,5 @@ mouse_filter = 2
 theme_override_font_sizes/font_size = 50
 
 [connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]

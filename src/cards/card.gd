@@ -43,6 +43,9 @@ func _ready() -> void:
 	progressBar.max_value = ready_time
 	costLabel.text = str(energy_cost)
 	
+	await get_tree().process_frame
+	original_pos = global_position
+	
 
 func _process(delta) -> void:
 	progressBar.value = readyTimer.time_left
@@ -84,7 +87,6 @@ func return_to_hand():
 func on_pressed(event : InputEvent) -> void:
 	is_pressed = true
 	touch_index = event.index
-	original_pos = global_position
 	target_pos = original_pos
 	GameEvents.cardSelected.emit()
 	is_selected = true

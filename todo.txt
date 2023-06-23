@@ -25,7 +25,6 @@ figure out how cards will handle these two timers (if I use them)
 # Store a list in hand. When each card is instanced just set the list to an empty one until it
 can be assigned the one in hand via func call.
 
-
 # balancing notes:
 	ready_time and damage are inversely proportional
 	cost and "value" are proportional

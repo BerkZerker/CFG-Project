@@ -1,8 +1,8 @@
 @tool
 class_name Hand extends Control
 
-@export var SIZE : int = 4
-@export var MARGIN : int = 10
+@export var SIZE : int
+@export var MARGIN : int
 
 var card_scene := preload("res://src/cards/card.tscn")
 var cards: Array[Card] = []

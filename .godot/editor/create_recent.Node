@@ -1,7 +1,10 @@
-TextureRect
-AnimationPlayer
+Timer
 Control
 MarginContainer
+Sprite2D
+TouchScreenButton
+TextureRect
+AnimationPlayer
 CenterContainer
 TextureProgressBar
 ProgressBar
@@ -9,10 +12,8 @@ HBoxContainer
 VBoxContainer
 CollisionShape2D
 Area2D
-Timer
 Container
 PanelContainer
-TouchScreenButton
 Node2D
 AnimatedSprite2D
 GridContainer
@@ -20,5 +21,4 @@ CanvasLayer
 Node
 Label
 Button
-Sprite2D
 TextureButton

@@ -46,12 +46,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_pue4b"]
 resource_name = "selected"
-length = 0.2
+length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -59,10 +59,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.15, 1.15)]
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7cnpu"]
@@ -81,21 +81,20 @@ offset_bottom = 260.0
 pivot_offset = Vector2(100, 130)
 mouse_filter = 1
 script = ExtResource("1_ius43")
-health = 2
-max_health = 2
+health = 5
+max_health = 5
 lane_type = 3
-deploy_time = null
-energy_cost = null
+ready_time = 3.0
+energy_cost = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ed8k4")
 centered = false
 
 [node name="GUI" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -125,10 +124,9 @@ shape = SubResource("RectangleShape2D_sqyjg")
 shape_visible = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -141,7 +139,6 @@ texture_progress = ExtResource("3_v28df")
 tint_progress = Color(1, 1, 1, 0.392157)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_7cnpu")
 }
