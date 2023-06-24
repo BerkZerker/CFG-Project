@@ -1,7 +1,3 @@
 res://src/game/game.tscn
 res://src/cards/card.tscn
 res://src/game/lane.tscn
-res://todo.txt
-res://src/game/game_events.gd
-res://src/cards/card.gd
-res://src/game/lane.gd
