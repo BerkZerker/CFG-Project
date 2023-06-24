@@ -17,8 +17,6 @@ figure out how cards will handle these two timers (if I use them)
 # Figure out how to handle lane animations. (4 signals sent to the lane class) (valid, invalid, hovered on, hovered off)
 (white highlight for current, red for invalid)
 
-# Add card animations -_-
-
 # Clean up code (look at debugger)
 
 # balancing notes:

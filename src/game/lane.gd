@@ -6,7 +6,8 @@ class_name Lane extends TextureRect
 
 @onready var cardQueue : VBoxContainer = $CenterContainer/CardQueue
 
-var touch_indexes: Dictionary = {}
+var touch_indexes : Dictionary = {}
+var highlight : int = 0
 
 enum Types {
 	NONE,
@@ -18,9 +19,8 @@ enum Types {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	#GameEvents.laneHighlightOn.connect(highlight_on)
-	#GameEvents.laneHighlightOff.connect(highlight_off)
+	GameEvents.addLaneHighlight.connect(_on_add_highlight)
+	GameEvents.subtractLaneHighlight.connect(_on_subtract_highlight)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,11 +57,16 @@ func add_card(card : Card) -> void:
 	#cardQueue.add_child(card)
 
 
-func highlight_on(lane_no : int):
+func _on_add_highlight(lane_no : int):
 	if number == lane_no:
-		modulate.a = 0.5
+		highlight += 1
+		if highlight > 0:
+			modulate.a = 0.5
 
 
-func highlight_off(lane_no : int):
+func _on_subtract_highlight(lane_no : int):
 	if number == lane_no:
-		modulate.a = 1
+		highlight -= 1
+		if highlight <= 0:
+			highlight = 0
+			modulate.a = 1

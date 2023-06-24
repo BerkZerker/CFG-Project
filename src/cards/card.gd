@@ -21,6 +21,7 @@ var is_selected : bool = false
 var target_pos : Vector2 = Vector2.ZERO
 var original_pos : Vector2 = Vector2.ZERO
 var current_lane : int = 0
+var previous_lane : int = 0
 var card_state : States = States.WAITING
 
 enum States {
@@ -118,17 +119,19 @@ func _on_card_selected() -> void:
 
 func _on_lane_entered(index : int, lane : int, type : Lane.Types) -> void:
 	if touch_index == index and (card_state == States.CARRYING or card_state == States.DROPPABLE) and (lane_type == type or lane_type == Lane.Types.DEBUG):
+		previous_lane = current_lane
 		current_lane = lane
 		card_state = States.DROPPABLE
-		#GameEvents.laneHighlightOn.emit(current_lane)
+		GameEvents.addLaneHighlight.emit(current_lane)
 
 
 func _on_lane_exited(index : int, lane : int, type : Lane.Types) -> void:
 	if touch_index == index and current_lane == lane and (lane_type == type or lane_type == Lane.Types.DEBUG):
-		# This if statement might still be buggy
-		current_lane = 0
 		card_state = States.CARRYING
-		#GameEvents.laneHighlightOff.emit(lane)
+		GameEvents.subtractLaneHighlight.emit(current_lane)
+		current_lane = 0
+	elif previous_lane == lane:
+		GameEvents.subtractLaneHighlight.emit(previous_lane)
 
 
 func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
@@ -138,9 +141,12 @@ func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types)
 		hand_reference.touch_indexes.append(touch_index)
 		target_pos.x = pos.x - size.x / 2.0
 		target_pos.y = pos.y - size.y / 2.0
+		previous_lane = current_lane
 		current_lane = lane
 		card_state = States.DROPPABLE
+		GameEvents.addLaneHighlight.emit(current_lane)
 
 
 func _on_lane_released(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
-	pass
+	if current_lane == lane:
+		GameEvents.subtractLaneHighlight.emit(lane)
