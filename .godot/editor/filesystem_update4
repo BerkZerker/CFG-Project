@@ -1,3 +1,8 @@
+res://src/game/arena.tscn
+res://src/cards/card.gd
 res://src/game/game.tscn
 res://src/cards/card.tscn
 res://src/game/lane.tscn
+res://src/game/game.gd
+res://src/game/hand.gd
+res://todo.txt

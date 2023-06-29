@@ -46,7 +46,8 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 80
-text = "Pause"
+text = "Pause
+"
 
 [node name="Arena" parent="VBoxContainer" instance=ExtResource("2_jraly")]
 layout_mode = 2

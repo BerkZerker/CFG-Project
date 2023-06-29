@@ -64,10 +64,9 @@ func _on_energy_timer_timeout() -> void:
 func start_new_game() -> void:
 	matchTimer.start()
 	energyTimer.start()
-	
 
 
-func _on_game_timer_timeout():
+func _on_game_timer_timeout() -> void:
 	print('game over!')
 	paused = true
 	get_tree().paused = paused

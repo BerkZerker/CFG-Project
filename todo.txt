@@ -11,15 +11,12 @@ so that they would be easily visible.
 # I'll make action funcs in the lane class (think "damage(value)") and then call
 them from the card's action func "laneRef.damage(self.damage)"
 
-# i may need a 2nd timer for how long the actual action takes.
-figure out how cards will handle these two timers (if I use them)
 
-# Figure out how to handle lane animations. (4 signals sent to the lane class) (valid, invalid, hovered on, hovered off)
-(white highlight for current, red for invalid)
-
-# Clean up code (look at debugger)
+# I need to clean up and do some debugging - specifcally animations.
 
 # balancing notes:
 	ready_time and damage are inversely proportional
 	cost and "value" are proportional
 	(ik i spelled those wrong I just don't care)
+	
+	

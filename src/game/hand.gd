@@ -33,9 +33,9 @@ func calculate_size() -> void:
 # Adds a new card at the specified slot in the hand.
 func new_card(index : int) -> void:
 	var card = card_scene.instantiate()
+	card.index_array = touch_indexes
 	card.position.x = index * (card.size.x + MARGIN)
 	card.card_state = card.States.WAITING
 	card.hand_index = index
-	card.hand_reference = self
 	cards.append(card)
 	add_child(card)
