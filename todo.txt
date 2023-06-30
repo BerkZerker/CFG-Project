@@ -12,11 +12,15 @@ so that they would be easily visible.
 them from the card's action func "laneRef.damage(self.damage)"
 
 
-# I need to clean up and do some debugging - specifcally animations.
+# Clean up code (including re-ordering the file tree), make some assets, 
+work on animations, debug. (also look at the debugger when I'm done)
 
 # balancing notes:
 	ready_time and damage are inversely proportional
 	cost and "value" are proportional
 	(ik i spelled those wrong I just don't care)
 	
+	
+for the lanes: i'll just check the list of fingers in the lane against the card indexes -
+if there are any in both then highlight on, otherwise highlight off.
 	

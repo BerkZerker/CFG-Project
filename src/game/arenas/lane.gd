@@ -6,7 +6,8 @@ class_name Lane extends TextureRect
 
 @onready var cardQueue : VBoxContainer = $CenterContainer/CardQueue
 
-var touch_indexes : Dictionary = {}
+var touch_indexes : Array[int] = []
+var card_indexes : Dictionary = {}
 var highlight : int = 0
 
 enum Types {
@@ -19,8 +20,8 @@ enum Types {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameEvents.addLaneHighlight.connect(_on_add_highlight)
-	GameEvents.subtractLaneHighlight.connect(_on_subtract_highlight)
+	GameEvents.cardPressed.connect(_on_card_pressed)
+	GameEvents.cardReleased.connect(_on_card_released)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,20 +35,32 @@ func _unhandled_input(event : InputEvent) -> void:
 		if get_global_rect().has_point(event.position):
 			# If a touch down happens inside the rect
 			if event.pressed and not touch_indexes.has(event.index): 
-				touch_indexes[event.index] = true
+				touch_indexes.append(event.index)
 				GameEvents.lanePressed.emit(event.position, event.index, number, type)
+				if card_indexes.has(event.index):
+					if card_indexes[event.index] == type:
+						highlight += 1
+						update_highlight()
 			# If a touch up happens inside the rect
 			elif not event.pressed and touch_indexes.has(event.index):
 				touch_indexes.erase(event.index)
 				GameEvents.laneReleased.emit(event.position, event.index, number, type)
+				if not card_indexes.has(event.index):
+					highlight_off()
+				#if highlighted and card_indexes.size() == 0: # This needs to make sure there are 0 cards left.
+					highlight_off()
 
 	if event is InputEventScreenDrag:
 		if get_global_rect().has_point(event.position) and not touch_indexes.has(event.index): 
-			touch_indexes[event.index] = true
+			touch_indexes.append(event.index)
 			GameEvents.laneEntered.emit(event.index, number, type)
+			if card_indexes.has(event.index):
+				if card_indexes[event.index] == type:
+					highlight_on()
 		elif not get_global_rect().has_point(event.position) and touch_indexes.has(event.index):
 			touch_indexes.erase(event.index)
 			GameEvents.laneExited.emit(event.index, number, type)
+
 
 
 # FOR TESTING
@@ -57,16 +70,23 @@ func add_card(card : Card) -> void:
 	#cardQueue.add_child(card)
 
 
-func _on_add_highlight(lane_no : int):
-	if number == lane_no:
-		highlight += 1
-		if highlight > 0:
-			modulate.a = 0.5
+func highlight_on():
+	modulate.a = 0.5
 
 
-func _on_subtract_highlight(lane_no : int):
-	if number == lane_no:
-		highlight -= 1
-		if highlight <= 0:
-			highlight = 0
-			modulate.a = 1
+func highlight_off():)
+	modulate.a = 1
+	
+
+func update_highlight():
+	pass
+
+
+func _on_card_pressed(index : int, lane_type : Types) -> void:
+	if not card_indexes.has(index):
+		card_indexes[index] = lane_type
+
+
+func _on_card_released(index : int, lane_type : Types) -> void:
+	if card_indexes.has(index):
+		card_indexes.erase(index)

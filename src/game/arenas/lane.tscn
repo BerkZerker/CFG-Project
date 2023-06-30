@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf74jxsgldog1"]
 
-[ext_resource type="Script" path="res://src/game/lane.gd" id="1_hiiu1"]
+[ext_resource type="Script" path="res://src/game/arenas/lane.gd" id="1_hiiu1"]
 
 [node name="Lane" type="TextureRect"]
 clip_contents = true

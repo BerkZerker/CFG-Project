@@ -14,7 +14,6 @@ class_name Card extends Control
 @onready var costLabel : Label = $GUI/Cost
 
 var touch_index : int = -1
-var index_array : Array[int]
 var hand_index : int = -1
 var is_pressed : bool = false
 var is_selected : bool = false
@@ -58,7 +57,7 @@ func _process(delta) -> void:
 # This handles if the card is selected, dragged, and dropped.
 func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventScreenTouch:
-		if $TouchScreenButton.is_pressed() and not is_pressed and card_state == States.WAITING:# and not hand_reference.touch_indexes.has(event.index):
+		if $TouchScreenButton.is_pressed() and not is_pressed and card_state == States.WAITING:
 			on_pressed(event)
 		elif not $TouchScreenButton.is_pressed() and is_pressed:
 			on_released()
@@ -72,6 +71,7 @@ func _unhandled_input(event : InputEvent) -> void:
 
 
 func execute_action() -> void:
+	print('action exectued')
 	queue_free()
 	
 
@@ -89,8 +89,8 @@ func return_to_hand():
 func on_pressed(event : InputEvent) -> void:
 	is_pressed = true
 	touch_index = event.index
-	index_array.append(touch_index)
 	target_pos = original_pos
+	GameEvents.cardPressed.emit(touch_index, lane_type)
 	GameEvents.cardSelected.emit()
 	is_selected = true
 	# FOR TESTING
@@ -101,7 +101,7 @@ func on_pressed(event : InputEvent) -> void:
 # Is called when the card is dropped.
 func on_released() -> void:
 	is_pressed = false
-	index_array.erase(touch_index)
+	GameEvents.cardReleased.emit(touch_index, lane_type)
 	touch_index = -1
 	if card_state == States.WAITING or card_state == States.CARRYING:
 		return_to_hand()
@@ -122,31 +122,33 @@ func _on_lane_entered(index : int, lane : int, type : Lane.Types) -> void:
 		previous_lane = current_lane
 		current_lane = lane
 		card_state = States.DROPPABLE
-		GameEvents.addLaneHighlight.emit(current_lane)
+		#GameEvents.addLaneHighlight.emit(current_lane)
 
 
 func _on_lane_exited(index : int, lane : int, type : Lane.Types) -> void:
 	if touch_index == index and current_lane == lane and (lane_type == type or lane_type == Lane.Types.DEBUG):
 		card_state = States.CARRYING
-		GameEvents.subtractLaneHighlight.emit(current_lane)
+		#GameEvents.subtractLaneHighlight.emit(current_lane)
 		current_lane = 0
 	elif previous_lane == lane:
-		GameEvents.subtractLaneHighlight.emit(previous_lane)
+		#GameEvents.subtractLaneHighlight.emit(previous_lane)
+		pass
 
 
 func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
 	if is_selected and card_state == States.WAITING:
 		is_pressed = true
 		touch_index = index
-		index_array.append(touch_index)
+		GameEvents.cardPressed.emit(touch_index, lane_type)
 		target_pos.x = pos.x - size.x / 2.0
 		target_pos.y = pos.y - size.y / 2.0
 		previous_lane = current_lane
 		current_lane = lane
 		card_state = States.DROPPABLE
-		GameEvents.addLaneHighlight.emit(current_lane)
+		#GameEvents.addLaneHighlight.emit(current_lane)
 
 
 func _on_lane_released(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
 	if current_lane == lane:
-		GameEvents.subtractLaneHighlight.emit(lane)
+		#GameEvents.subtractLaneHighlight.emit(lane)
+		pass

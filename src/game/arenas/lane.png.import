@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c75lqs70fo4cf"
-path="res://.godot/imported/blank.png-ea2857ce118831c6b913b2b62223923c.ctex"
+uid="uid://x8hfcybcr6rf"
+path="res://.godot/imported/lane.png-281ea20eb50bdcd107eebaa008bc601f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://old/objects/enviromment/blank.png"
-dest_files=["res://.godot/imported/blank.png-ea2857ce118831c6b913b2b62223923c.ctex"]
+source_file="res://src/game/arenas/lane.png"
+dest_files=["res://.godot/imported/lane.png-281ea20eb50bdcd107eebaa008bc601f.ctex"]
 
 [params]
 

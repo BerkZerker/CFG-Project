@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://qgf2qrsruc3k"]
 
 [ext_resource type="Script" path="res://src/cards/card.gd" id="1_ius43"]
-[ext_resource type="Texture2D" uid="uid://c75lqs70fo4cf" path="res://old/objects/enviromment/blank.png" id="2_djran"]
+[ext_resource type="Texture2D" uid="uid://c75lqs70fo4cf" path="res://src/cards/blank.png" id="2_6ward"]
 [ext_resource type="Texture2D" uid="uid://bwp7h2h6svrxm" path="res://src/cards/card-progress-bar.png" id="3_v28df"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ed8k4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_djran")
+"texture": ExtResource("2_6ward")
 }],
 "loop": false,
 "name": &"default",
@@ -84,7 +84,7 @@ mouse_filter = 1
 script = ExtResource("1_ius43")
 health = 5
 max_health = 5
-lane_type = 3
+lane_type = 1
 ready_time = 3.0
 energy_cost = 2
 

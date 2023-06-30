@@ -25,6 +25,11 @@ func _ready() -> void:
 	matchTimer.wait_time = MATCH_TIME
 	start_new_game()
 	
+	
+func start_new_game() -> void:
+	matchTimer.start()
+	energyTimer.start()
+	
 
 func _process(delta) -> void:
 	# Update the energy bar and match time UI
@@ -58,11 +63,6 @@ func _on_energy_timer_timeout() -> void:
 	energy += 1
 	if energy > MAX_ENERGY:
 		energy = MAX_ENERGY
-	energyTimer.start()
-	
-
-func start_new_game() -> void:
-	matchTimer.start()
 	energyTimer.start()
 
 
