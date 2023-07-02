@@ -66,12 +66,12 @@ func _unhandled_input(event : InputEvent) -> void:
 		if is_pressed and event.index == touch_index:
 			if card_state == States.WAITING:
 				card_state = States.CARRYING
-			target_pos.x = event.position.x - size.x / 2.0
-			target_pos.y = event.position.y - size.y / 2.0
+			#print(size.x * scale.x)
+			target_pos.x = event.position.x - (size.x * scale.x) / 2.0
+			target_pos.y = event.position.y - (size.y * scale.y) / 2.0
 
 
 func execute_action() -> void:
-	print('action exectued')
 	queue_free()
 	
 
@@ -82,7 +82,11 @@ func start_deploy_timer() -> void:
 	
 func return_to_hand():
 	card_state = States.WAITING
-	global_position = original_pos
+	#global_position = original_pos
+	#$AnimationPlayer.play("returned")
+	var t = global_position.distance_to(original_pos) / 4000 # t = vd
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", original_pos, t)
 
 
 # Is called when the card is selected.
@@ -93,8 +97,6 @@ func on_pressed(event : InputEvent) -> void:
 	GameEvents.cardPressed.emit(touch_index, lane_type)
 	GameEvents.cardSelected.emit()
 	is_selected = true
-	# FOR TESTING
-	$AnimationPlayer.stop()
 	$AnimationPlayer.play("selected")
 	
 
@@ -112,8 +114,6 @@ func on_released() -> void:
 func _on_card_selected() -> void:
 	if is_selected:
 		is_selected = false
-		# FOR TESTING
-		$AnimationPlayer.stop()
 		$AnimationPlayer.play("deselected")
 
 
@@ -136,7 +136,7 @@ func _on_lane_exited(index : int, lane : int, type : Lane.Types) -> void:
 
 
 func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
-	if is_selected and card_state == States.WAITING:
+	if is_selected and card_state == States.WAITING and (lane_type == type or lane_type == Lane.Types.DEBUG):
 		is_pressed = true
 		touch_index = index
 		GameEvents.cardPressed.emit(touch_index, lane_type)

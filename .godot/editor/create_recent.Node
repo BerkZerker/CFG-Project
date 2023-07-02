@@ -1,10 +1,11 @@
+AnimationTree
+AnimationPlayer
 Timer
 Control
 MarginContainer
 Sprite2D
 TouchScreenButton
 TextureRect
-AnimationPlayer
 CenterContainer
 TextureProgressBar
 ProgressBar

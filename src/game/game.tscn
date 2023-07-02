@@ -57,7 +57,6 @@ custom_minimum_size = Vector2(845, 260)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-SIZE = 4
 MARGIN = 15
 
 [node name="EnergyBar" type="ProgressBar" parent="VBoxContainer"]
