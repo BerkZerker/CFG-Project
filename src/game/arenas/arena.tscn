@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ypj5xvoyqk54" path="res://src/game/arenas/player_lane.tscn" id="2_axmfr"]
 
 [node name="Arena" type="VBoxContainer"]
+offset_right = 8.0
+offset_bottom = 15.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 15

@@ -1,10 +1,7 @@
-res://src/game/hand.tscn
 res://src/game/game.tscn
-res://todo.txt
-res://src/game/arenas/lane.gd
-res://src/cards/card.tscn
-res://src/game/arenas/player_lane.tscn
-res://src/game/arenas/enemy_lane.tscn
-res://src/game/arenas/arena.tscn
 res://src/cards/card.gd
+res://src/cards/card.tscn
+res://src/game/hand.tscn
 res://src/game/arenas/lane.tscn
+res://src/game/arenas/arena.tscn
+res://todo.txt

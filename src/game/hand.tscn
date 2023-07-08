@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/game/hand.gd" id="1_l5bhu"]
 
 [node name="Hand" type="Control"]
-custom_minimum_size = Vector2(0, 260)
+custom_minimum_size = Vector2(800, 260)
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2

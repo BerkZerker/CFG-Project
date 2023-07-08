@@ -12,8 +12,8 @@ so that they would be easily visible.
 them from the card's action func "laneRef.damage(self.damage)"
 
 
-# Clean up code, debug. (also look at the debugger when I'm done)
-# I need to just move nodes by their center point (calculated by size * scale / 2)
+# Clean up code, work on animations, debug. (also look at the debugger when I'm done)
+# I need to blend the lane animations
 
 # balancing notes:
 	ready_time and damage are inversely proportional
