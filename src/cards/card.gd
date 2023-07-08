@@ -149,6 +149,7 @@ func _on_lane_exited(index : int, lane : int, type : Lane.Types) -> void:
 func _on_lane_pressed(pos : Vector2, index : int, lane : int, type : Lane.Types) -> void:
 	if is_selected and card_state == States.WAITING and (lane_type == type or lane_type == Lane.Types.DEBUG):
 		is_pressed = true
+		is_selected = false
 		is_button_pressed = true
 		touch_index = index
 		if animation_tween:

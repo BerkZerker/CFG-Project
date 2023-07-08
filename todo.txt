@@ -11,9 +11,7 @@ so that they would be easily visible.
 # I'll make action funcs in the lane class (think "damage(value)") and then call
 them from the card's action func "laneRef.damage(self.damage)"
 
-
-# Clean up code, work on animations, debug. (also look at the debugger when I'm done)
-# I need to blend the lane animations
+# Clean up code, work on animations, debug. (also look at the debugger when I'm done
 
 # balancing notes:
 	ready_time and damage are inversely proportional

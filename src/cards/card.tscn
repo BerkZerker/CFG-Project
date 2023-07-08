@@ -84,7 +84,7 @@ mouse_filter = 1
 script = ExtResource("1_ius43")
 health = 5
 max_health = 5
-lane_type = 1
+lane_type = 3
 ready_time = 3.0
 energy_cost = 2
 
