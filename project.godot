@@ -14,6 +14,7 @@ config/name="CFG"
 run/main_scene="res://src/game/game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
+config/icon="res://src/cards/blank.png"
 
 [autoload]
 
