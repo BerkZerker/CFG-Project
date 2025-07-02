@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://qgf2qrsruc3k"]
 
-[ext_resource type="Script" path="res://src/cards/card.gd" id="1_ius43"]
+[ext_resource type="Script" uid="uid://bmihtorv0wf0d" path="res://src/cards/card.gd" id="1_ius43"]
 [ext_resource type="Texture2D" uid="uid://c75lqs70fo4cf" path="res://src/cards/blank.png" id="2_6ward"]
 [ext_resource type="Texture2D" uid="uid://bwp7h2h6svrxm" path="res://src/cards/card-progress-bar.png" id="3_v28df"]
 
@@ -68,9 +68,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7cnpu"]
 _data = {
-"RESET": SubResource("Animation_r3l4t"),
-"deselected": SubResource("Animation_mdn41"),
-"selected": SubResource("Animation_pue4b")
+&"RESET": SubResource("Animation_r3l4t"),
+&"deselected": SubResource("Animation_mdn41"),
+&"selected": SubResource("Animation_pue4b")
 }
 
 [node name="Card" type="Control"]

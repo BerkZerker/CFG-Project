@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4m06jrs44vna"]
 
-[ext_resource type="Script" path="res://src/game/hand.gd" id="1_l5bhu"]
+[ext_resource type="Script" uid="uid://bl533gtaka1ug" path="res://src/game/hand.gd" id="1_l5bhu"]
 
 [node name="Hand" type="Control"]
 custom_minimum_size = Vector2(800, 260)

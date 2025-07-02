@@ -1,7 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://coriuoawc8sjh"]
 
 [ext_resource type="PackedScene" uid="uid://qgf2qrsruc3k" path="res://src/cards/card.tscn" id="1_jq8a0"]
-[ext_resource type="Script" path="res://actions/action_card.gd" id="2_d2mte"]
+
+[sub_resource type="Resource" id="Resource_kbc4c"]
+metadata/__load_path__ = "res://actions/action_card.gd"
 
 [sub_resource type="Animation" id="Animation_3yilk"]
 length = 0.001
@@ -124,13 +126,13 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_00fxm"]
 _data = {
-"RESET": SubResource("Animation_3yilk"),
-"dropped": SubResource("Animation_jwlw7"),
-"selected": SubResource("Animation_wjsfl")
+&"RESET": SubResource("Animation_3yilk"),
+&"dropped": SubResource("Animation_jwlw7"),
+&"selected": SubResource("Animation_wjsfl")
 }
 
 [node name="ActionCard" instance=ExtResource("1_jq8a0")]
-script = ExtResource("2_d2mte")
+script = SubResource("Resource_kbc4c")
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {

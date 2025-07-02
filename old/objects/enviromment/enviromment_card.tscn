@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2qntu1kie6ag"]
 
 [ext_resource type="PackedScene" uid="uid://b51lr8qdh0sdr" path="res://old/objects/object_card.tscn" id="1_0qyt6"]
-[ext_resource type="Script" path="res://old/objects/enviromment/enviromment_card.gd" id="2_cr0yj"]
+[ext_resource type="Script" uid="uid://dlhxr1wrvj1en" path="res://old/objects/enviromment/enviromment_card.gd" id="2_cr0yj"]
 [ext_resource type="Texture2D" uid="uid://c75lqs70fo4cf" path="res://src/cards/blank.png" id="3_1few0"]
-
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k6727"]
 animations = [{

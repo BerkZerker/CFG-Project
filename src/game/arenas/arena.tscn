@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtyunjlwjefep"]
 
 [ext_resource type="PackedScene" uid="uid://cxn1cpfrgf63y" path="res://src/game/arenas/enemy_lane.tscn" id="1_c61ig"]
-[ext_resource type="Script" path="res://src/game/arenas/arena.gd" id="1_o1mqs"]
+[ext_resource type="Script" uid="uid://cclpa058j0lb2" path="res://src/game/arenas/arena.gd" id="1_o1mqs"]
 [ext_resource type="PackedScene" uid="uid://ypj5xvoyqk54" path="res://src/game/arenas/player_lane.tscn" id="2_axmfr"]
 
 [node name="Arena" type="VBoxContainer"]

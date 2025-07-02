@@ -12,7 +12,7 @@ config_version=5
 
 config/name="CFG"
 run/main_scene="res://src/game/game.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 run/max_fps=60
 config/icon="res://src/cards/blank.png"
 

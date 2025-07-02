@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b51lr8qdh0sdr"]
 
 [ext_resource type="PackedScene" uid="uid://qgf2qrsruc3k" path="res://src/cards/card.tscn" id="1_4b5b6"]
-[ext_resource type="Script" path="res://old/objects/object_card.gd" id="2_qusp5"]
+[ext_resource type="Script" uid="uid://bt2adm1f7cqlg" path="res://old/objects/object_card.gd" id="2_qusp5"]
 
 [sub_resource type="Animation" id="Animation_t4a3u"]
 length = 0.001
@@ -156,11 +156,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oybgs"]
 _data = {
-"RESET": SubResource("Animation_t4a3u"),
-"highlight_off": SubResource("Animation_xvkik"),
-"highlight_on": SubResource("Animation_fqt7r"),
-"pressed": SubResource("Animation_q5y0c"),
-"released": SubResource("Animation_7qyiq")
+&"RESET": SubResource("Animation_t4a3u"),
+&"highlight_off": SubResource("Animation_xvkik"),
+&"highlight_on": SubResource("Animation_fqt7r"),
+&"pressed": SubResource("Animation_q5y0c"),
+&"released": SubResource("Animation_7qyiq")
 }
 
 [node name="ObjectCard" instance=ExtResource("1_4b5b6")]
